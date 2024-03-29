@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
 const db = require('./db');
+require('dotenv').config();//server ko bhi malum hona chahiye ki dotenv bol ke koi file hain
 
 const bodyParser = require('body-parser');//body-parser basically frontend se jo data aa raha hoga na usko JSON format se object main convert karega aur req.body main store karega
 app.use(bodyParser.json());
-
 // const Person = require('./models/person');
 //const MenuItem = require('./models/MenuItem');
+const PORT = process.env.PORT || 3000;
 
 app.get('/', function (req, res) {
     res.send('Hello there welcome to my restaurant');
@@ -110,7 +111,7 @@ const menuItemRoutes = require('./routes/menuItemRoutes');
 app.use('/person',personRoutes);//person was common endpoint
 app.use('/menu',menuItemRoutes);
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log('Listening on port 3000');
 })
 //ab dekho frontend par jab humlog submit button par click karte hain tab backend par api main woh data aata hain aur phir api uss data ko server tak pahuchata hain

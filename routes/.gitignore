@@ -1,3 +1,4 @@
     
     # Ignore node_modules directory...means gitignore ke andar jo files rahega usko git track nahi karega
  node_modules/
+ .env
